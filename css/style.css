@@ -1,0 +1,82 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0px;
+}
+
+#pop-up {
+  /* remove this popup from normal page flow */
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  /* fill the entire viewport */
+  width: 100vw;
+  height: 100vh;
+  /* ensure it is over-top all other page elements */
+  z-index: 1000;
+  /* transparency allows user to see content behind */
+  background-color: rgba(45, 66, 66, 0);
+  font-size: 0.85em;
+}
+
+#pop-up h2 {
+  margin-top: 10px;
+}
+
+#pop-up div {
+  /* vertically/horizontally center this element*/
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* basic box model stuff*/
+  max-width: 500px;
+  min-width: 300px;
+  max-height: 500px;
+  min-height: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px #486a86, 0 0 0 4px #6399c6, 0 0 0 8px #1e374c;
+  background-color: #376183;
+  color: white;
+}
+
+#close-pop-up {
+  background-color: white;
+  color: #1e374c;
+  font-weight: bold;
+  border: solid 3px #1e374c;
+  border-radius: 5px;
+  /*
+  make a 'hand' pointer icon appear on mouseover
+  otherwise it will just be the usual mouse cursor arrow
+  */
+  cursor: pointer;
+  /*
+  locate this X button in the 
+  top right corner of the popup
+  */
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+#rule2 {
+  display: none;
+}
+
+#rule3 {
+  display: none;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+  color: #213a4e;
+  font-size: 20px;
+}
