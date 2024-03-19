@@ -1,5 +1,27 @@
+/*
+-----------------------------
+.class element selectors 
+place after HTML elements in .css file
+-----------------------------
+*/
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+-----------------------------
+#id element selectors 
+place last in .css file 
+(after .classes and HTML elements)
+-----------------------------
+*/
+
 #pop-up{
 	/* remove this popup from normal page flow */
+    display:flex;
     position:fixed;
     top:0px;
     left:0px;    
@@ -15,6 +37,7 @@
 
 #pop-up h2{
     margin-top: 10px;
+    text-align: center;
 }
 
 #pop-up div{
@@ -24,11 +47,10 @@ left:50%;
 top:50%;
 transform:translate(-50%, -50%);
 
-
 /* basic box model stuff*/
 max-width:500px;
 min-width:300px;
-max-height:500px;
+max-height:700px;
 min-height:300px;
 padding:10px;
 border-radius:10px;
@@ -37,7 +59,11 @@ box-shadow: 0 0 0 2px #486a86,
             0 0 0 8px #1e374c;
 background-color: #376183;
 color:white;
+}
 
+#pop-up img{
+    width: 50px;
+    height: auto;
 }
 
 #close-pop-up{
@@ -60,10 +86,8 @@ top:2px;
 right:2px;
 }
 
-#rule2{
-    display:none;
+#example-score{
+    padding-left: 10px;
 }
 
-#rule3{
-    display:none;
-}
+

@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--
         author: Benjamin Lee 
-        date: 03/14/2024
+        date: 03/18/2024
         student number: A00871659
     -->
 	<head>
@@ -19,6 +19,8 @@
 
         <script src="scripts/jquery-3.7.0.min.js" defer></script>
         <script src="scripts/popup.js" defer="defer"></script>
+        <script src="scripts/dice.js" defer="defer"></script>
+
     </head>
 
 	<body>
@@ -28,7 +30,7 @@
         </header>
         
         <main>
-
+            <p id="diceTest"></p>
         </main>
 
         <section id="pop-up">
@@ -38,14 +40,17 @@
                 <p>The user and computer each roll a pair of dice <strong>3 times</strong>.</p>
                 <p>After the <strong>third roll</strong> of the dice, the player with the highest score wins!</p>
                 <h3>Rules</h3>
-                <p id="rules">If any of the players two dice comes up as a 1 then the score for that round for the player is 0.
-                    <br>(If the player rolls a 6 and 1, they get a score of 0)</p>
+                <p id="rules">
+                    <span class="center"><img src="images/dice/dice-6.png"><img src="images/dice/dice-1.png"><b id="example-score">SCORE = 0</b></span>
+                    <br>If any of the players two dice comes up as a 1 then the score for that round for the player is 0.
+                    <br>
+                    <br>(If the player rolls a 6 and 1, they get a score of 0)
+                </p>
 
                 <button id="previous" disabled="disabled">PREV</button>
                 <button id="next">NEXT</button>
             </div>
         </section>
-
 	</body>
 
 </html>
