@@ -3,3 +3,28 @@ html{
     color: #213a4e;;
     font-size: 20px;
 }
+
+header{
+    background-color:	#376183;
+    width:100%;
+    height: auto;
+    margin:auto;
+    padding: 10px;
+    color:#ffffff;
+}
+
+/*
+-----------------------------
+#id element selectors 
+place last in .css file 
+(after .classes and HTML elements)
+-----------------------------
+*/
+
+#wrapper{
+	background-color: white;
+	max-width: 1900px;
+    min-height:100vh;
+	margin: 0 auto;
+	padding: 10px;
+}

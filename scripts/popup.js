@@ -2,6 +2,7 @@ const $popup = $('#pop-up');
 const $closeButton = $('#close-pop-up');
 const $nextButton = $('#next');
 const $prevButton = $('#previous');
+const $helpButton = $('#help');
 
 const rules = document.getElementById('rules');
 const listRules = [];
@@ -71,5 +72,12 @@ $prevButton.click( function(){
 
 // close pop-up
 $closeButton.click( function(){
+    $helpButton.prop('disabled', false);
     $popup.hide();
+});
+
+// help button clicked
+$helpButton.click( function(){
+    $helpButton.prop('disabled', true);
+    $popup.show();
 });
