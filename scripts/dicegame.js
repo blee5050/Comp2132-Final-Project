@@ -1,5 +1,7 @@
 const diceTest = document.getElementById('diceTest');
-const $startButton = $('#start');
+const roundTest = document.getElementById('roundTest');
+const $rollDice = $('#roll');
+const $newGame = $('#new-game');
 
 class DieFace{
     constructor(value){
@@ -29,12 +31,6 @@ class Die{
     }
 }
 
-class Player{
-    constructor(){
-
-    }
-}
-
 Die.prototype.roll = function(){
 
     let j;
@@ -52,102 +48,117 @@ let playerScoreCurrent = 0;
 let computerScoreTotal = 0;
 let computerScoreCurrent = 0;
 let gameRound = 0;
+let maxRound = 3;
 let playerDie1;
 let playerDie2;
 let computerDie1;
 let computerDie2;
 
+
+diceTest.innerHTML = 
+`<p>Player Total = ${playerScoreTotal}</p>
+ <p>Player Current = ${playerScoreCurrent}</p>
+ <p>Computer Total = ${computerScoreTotal}</p>
+ <p>Computer Current = ${computerScoreCurrent}</p>
+ <p>Round = ${gameRound}</p>`;
+
+playGame();
+
 // begin game
-$startButton.click( function(){
-
-    // if 3 rounds have not been played, roll dice
-    if(gameRound != 3)
+function calcScore(die1, die2){
+    //rule 1
+    if(die1 == 1 || die2 == 1)
     {
-        gameRound++;
-        playerDie1 = dieObject.roll()
-        playerDie2 = dieObject.roll()
-        computerDie1 = dieObject.roll()
-        computerDie2 = dieObject.roll()
+        return 0;
+    }
+    //rule 2
+    else if(die1 == die2)
+    {
+        return die1 * 4;
+    }
+    //rule 3
+    else
+    {
+        return die1 + die2;
+    }
+}
+function playGame(){
 
-        pDieValue1 = playerDie1.getValue();
-        pDieValue2 = playerDie2.getValue();
-        cDieValue1 = computerDie1.getValue();
-        cDieValue2 = computerDie2.getValue();
+    $rollDice.click( function(){
 
-        // implement rules
-        // player
-        if(pDieValue1 == 1 || pDieValue2 == 1)
+        if(gameRound < maxRound)
         {
-            playerScoreTotal += 0;
-            playerScoreCurrent = 0;
-        }
+            gameRound++;
+            // after 3 round show result.
+            if(gameRound == 3)
+            {
+                $rollDice.prop('disabled', true);
+                $newGame.prop('disabled', false);
+                if(playerScoreTotal == computerScoreTotal)
+                {
+                    roundTest.innerHTML += 
+                    `<p>It was a draw!</p>`;
+                }
+                else if(playerScoreTotal > computerScoreTotal)
+                {
+                    roundTest.innerHTML += 
+                    `<p>You Win!</p>`;
+                }
+                else
+                {
+                    roundTest.innerHTML += 
+                    `<p>You Lose!</p>`;
+                }
+            }
+            playerDie1 = dieObject.roll();
+            playerDie2 = dieObject.roll();
+            computerDie1 = dieObject.roll();
+            computerDie2 = dieObject.roll();
+    
+            pDieValue1 = playerDie1.getValue();
+            pDieValue2 = playerDie2.getValue();
+            cDieValue1 = computerDie1.getValue();
+            cDieValue2 = computerDie2.getValue();
 
-        else if(pDieValue1 == pDieValue2)
-        {
-            playerScoreTotal += pDieValue1 * 4;
-            playerScoreCurrent = pDieValue1 * 4;
-            
+            // implement rules
+            playerScoreCurrent = calcScore(pDieValue1, pDieValue2);
+            playerScoreTotal += playerScoreCurrent;
+            computerScoreCurrent = calcScore(cDieValue1, cDieValue2);
+            computerScoreTotal += computerScoreCurrent;
         }
-
-        else
-        {
-            let storeValue;
-            storeValue = pDieValue1 + pDieValue2;
-            playerScoreTotal += storeValue;
-            playerScoreCurrent = storeValue;
-        }
-
-        // computer
-        if(cDieValue1 == 1 || cDieValue2 == 1)
-        {
-            computerScoreTotal += 0;
-            computerScoreCurrent = 0;
-        }
-
-        else if(cDieValue1 == cDieValue2)
-        {
-            computerScoreTotal += cDieValue1 * 4;
-            computerScoreCurrent = cDieValue1 * 4;
-        }
-        else
-        {
-            let storeValue;
-            storeValue = cDieValue1 + cDieValue2;
-            computerScoreTotal += storeValue;
-            computerScoreCurrent = storeValue;
-        }
-
+    
         //output results
         diceTest.innerHTML = 
         `<p>${playerDie1.describeSelf()}${playerDie2.describeSelf()}</p>
-         <p>${computerDie1.describeSelf()}${computerDie2.describeSelf()}</p>
-         <p>Player Total = ${playerScoreTotal}</p>
-         <p>Player Current = ${playerScoreCurrent}</p>
-         <p>Computer Total = ${computerScoreTotal}</p>
-         <p>Computer Current = ${computerScoreCurrent}</p>
-         <p>Round = ${gameRound}</p>`;
+        <p>${computerDie1.describeSelf()}${computerDie2.describeSelf()}</p>
+        <p>Player Total = ${playerScoreTotal}</p>
+        <p>Player Current = ${playerScoreCurrent}</p>
+        <p>Computer Total = ${computerScoreTotal}</p>
+        <p>Computer Current = ${computerScoreCurrent}</p>
+        <p>Round = ${gameRound}</p>`;
+    });
+     
+    $newGame.click( function(){
+        $rollDice.prop('disabled', false);
+        gameRound = 0;
+        playerScoreTotal = 0;
+        playerScoreCurrent = 0;
+        computerScoreTotal = 0;
+        computerScoreCurrent = 0;
+    
+        diceTest.innerHTML = 
+        `<p>Player Total = ${playerScoreTotal}</p>
+        <p>Player Current = ${playerScoreCurrent}</p>
+        <p>Computer Total = ${computerScoreTotal}</p>
+        <p>Computer Current = ${computerScoreCurrent}</p>
+        <p>Round = ${gameRound}</p>`;
+        roundTest.innerHTML = "";
 
-    }
-    // after 3 rounds of play
-    else
-    {
-        if(playerScoreTotal == computerScoreTotal)
-        {
-            diceTest.innerHTML += 
-            `<p>It was a draw!</p>`;
-        }
-        else if(playerScoreTotal > computerScoreTotal)
-        {
-            diceTest.innerHTML += 
-            `<p>You Win!</p>`;
-        }
-        else
-        {
-            diceTest.innerHTML += 
-            `<p>You Lose!</p>`;
-        }
-    }
 
-});
+        $newGame.prop('disabled', true);
+
+    
+    });
+};
 
 
