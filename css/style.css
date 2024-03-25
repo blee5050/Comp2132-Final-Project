@@ -165,10 +165,11 @@ main {
 }
 
 .help-box button {
-  background-color: #04AA6D; /* Green */
+  background-color: #023047;
   border: none;
   color: white;
   padding: 15px 32px;
+  width: 200px;
 }
 
 .button-box {
@@ -178,10 +179,12 @@ main {
 }
 
 .button-box button {
-  background-color: #04AA6D; /* Green */
+  background-color: #023047;
   border: none;
-  color: white;
+  color: #E59500;
   padding: 15px 32px;
+  width: 200px;
+  text-align: center;
 }
 
 .character-box {

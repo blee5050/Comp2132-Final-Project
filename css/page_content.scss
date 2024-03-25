@@ -1,16 +1,23 @@
+// mixin
+@mixin grid-padding-bg($padding, $bg-color){
+    padding: $padding;
+    background-color: $bg-color;  
+}
+
+
 html{
     font-family: 'Montserrat', sans-serif;
-    color: #344e41;
+    color: $default_text_color;
     font-size: 20px;
 }
 
 header{
-    background-color:#023047;
+    background-color:$bg_color;
     width:100%;
     height: auto;
     margin:auto;
     padding: 10px;
-    color:#E59500;
+    color:$highlight_color;
     text-align: center;
 }
 
@@ -66,10 +73,11 @@ main{
 }
 
 .help-box button{
-    background-color: #04AA6D; /* Green */
+    background-color: $bg_color; 
     border: none;
     color: white;
     padding: 15px 32px;
+    width: 200px;
 }
 
 .button-box{
@@ -79,10 +87,12 @@ main{
 }
 
 .button-box button{
-    background-color: #04AA6D; /* Green */
+    background-color: $bg_color;
     border: none;
-    color: white;
+    color: $highlight_color;
     padding: 15px 32px;
+    width: 200px;
+    text-align: center;
 }
 
 .character-box{
@@ -95,7 +105,7 @@ main{
 }
 
 .player-dice-box{
-    background-color: #a9bfbd;
+    background-color: $play_area_bg;
 }
 
 .player-dice-box img{
@@ -106,18 +116,17 @@ main{
     text-align: left;
     display: grid;
     grid-template-columns: auto auto;
-    padding: 15px;
-    background-color: #a9bfbd;
+    @include grid-padding-bg(15px, $play_area_bg);
 }
 
 .player-output{
     text-align: right;
-    color: #004BA8;
+    color: $player_color;
     padding: 1px;
 }
 
 .computer-dice-box{
-    background-color: #a9bfbd;
+    background-color: $play_area_bg;
 }
 
 .computer-dice-box img{
@@ -128,13 +137,12 @@ main{
     text-align: right;
     display: grid;
     grid-template-columns: auto auto;
-    padding: 15px;
-    background-color: #a9bfbd;
+    @include grid-padding-bg(15px, $play_area_bg);
 }
 
 .computer-output{
     text-align: left;
-    color: #CC2936;
+    color: $computer_color;
 }
 
 /*
@@ -147,7 +155,7 @@ place last in .css file
 
 #wrapper{
     display:flex;
-	background-color: #023047;
+	background-color: $bg_color;
 	max-width: 1900px;
     min-height:100vh;
 	margin: 0 auto;
