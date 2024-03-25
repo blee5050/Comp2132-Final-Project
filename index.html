@@ -26,16 +26,84 @@
 	<body>
         
         <header>
-            <h1>Final Project</h1> 
+            <h1>DICE BOXING</h1> 
         </header>
         
         <div id="wrapper">
             <main>
-                <p id="diceTest"></p>
-                <p id="roundTest">TEST ROUND</p>
-                <button id="help">HELP</button>
-                <button id="roll">ROLL</button>
-                <button id="new-game" disabled="disabled">NEW GAME?</button>
+    
+                <div class="grid">
+
+                    <div class="round-box">
+                        <p><b>ROUND <span id="roundOutput"></span></b></p>
+                    </div>
+
+                    <div class="result-box">
+                        <h2 id="gameResult"></h2>
+                    </div>
+
+                    <div class="character-box">
+                        <div class="player-nested">
+                            <img src="images/characters/ippo-base-1.png" alt="base-1" class="player-char"></div>
+                        <div class="computer-nested">
+                            <img src="images/characters/vol-base-1.png" alt="base-1" class="computer-char"></div>
+                    </div>
+               
+                    <div>
+                        <h3>PLAYER</h3>
+                    </div>
+                    <div>
+                        <h3>COMPUTER</h3>
+                    </div>
+
+                    <div class="player-dice-box">   
+                        <p id="playerDice"><img src="images/dice/dice-0.png" alt="blank die"><img src="images/dice/dice-0.png" alt="blank die"></p>
+                    </div>
+                    <div class="computer-dice-box">   
+                        <p id="computerDice"><img src="images/dice/dice-0.png" alt="blank die"><img src="images/dice/dice-0.png" alt="blank die"></p>
+                    </div>
+                 
+                    <div class="player-status-box">
+                        <div class="player-total-nested">
+                            <h4>TOTAL</h4>
+                        </div>
+                        <div class="player-output">
+                            <p id="playerTotal"></p>
+                        </div>
+                        <div class="player-current-nested">
+                            <h4>CURRENT</h4>
+                        </div>
+                        <div class="player-output">
+                            <p id="playerCurrent"></p>
+                        </div>
+                    </div>
+
+                    <div class="computer-status-box">
+                        <div class="computer-output">
+                            <p id="computerTotal"></p>
+                        </div>
+                        <div class="computer-total-nested">
+                            <h4>TOTAL</h4>
+                        </div>
+                        <div class="computer-output">
+                            <p id="computerCurrent"></p>
+                        </div>
+                        <div class="computer-current-nested">
+                            <h4>CURRENT</h4>
+                        </div>
+                    </div>
+
+                    <div class="button-box">
+                        <button id="roll">ATTACK</button>
+                        <button id="new-game">NEW GAME?</button>
+                    </div>
+
+                    <div class="help-box">
+                        <button id="help">HELP</button>
+                    </div>
+
+                </div>
+                
             </main>
         </div>
 
@@ -57,6 +125,7 @@
                 <button id="next">NEXT</button>
             </div>
         </section>
+
 	</body>
 
 </html>
